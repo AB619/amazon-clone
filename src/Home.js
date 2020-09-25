@@ -3,6 +3,7 @@ import './Home.css';
 import Product from './Product';
 
 function Home() {
+
     return (
         <div className="home">
             <div className="home__conatiner">
@@ -19,19 +20,44 @@ function Home() {
                         image="https://upload.wikimedia.org/wikipedia/en/1/11/Lean_Startup.png"
                         rating={5}
                     />
-                    <Product />
+                    <Product
+                        id="1256434343"
+                        title="The Lean Startup"
+                        price={29.99}
+                        image="https://upload.wikimedia.org/wikipedia/en/1/11/Lean_Startup.png"
+                        rating={5} />
                 </div>
 
                 <div className="home__row">
                     {/*Product X 3*/}
-                    <Product />
-                    <Product />
-                    <Product />
+                    <Product
+                        id="125343343343"
+                        title="The Lean Startup"
+                        price={29.99}
+                        image="https://upload.wikimedia.org/wikipedia/en/1/11/Lean_Startup.png"
+                        rating={5} />
+                    <Product
+                        id="165564343343"
+                        title="The Lean Startup"
+                        price={29.99}
+                        image="https://upload.wikimedia.org/wikipedia/en/1/11/Lean_Startup.png"
+                        rating={5} />
+                    <Product
+                        id="1256434343343"
+                        title="The Lean Startup"
+                        price={29.99}
+                        image="https://upload.wikimedia.org/wikipedia/en/1/11/Lean_Startup.png"
+                        rating={5} />
                 </div>
 
                 <div className="home__row">
                     {/*Product*/}
-                    <Product />
+                    <Product
+                        id="12564365655343"
+                        title="The Lean Startup"
+                        price={29.99}
+                        image="https://upload.wikimedia.org/wikipedia/en/1/11/Lean_Startup.png"
+                        rating={5} />
                 </div>
 
             </div>
