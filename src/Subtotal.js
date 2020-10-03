@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Subtotal.css';
 import CurrencyFormat from 'react-currency-format';
 import { useStateValue } from './StateProvider';
@@ -14,7 +14,6 @@ function Subtotal() {
                 renderText={(value) => (
                     <>
                         <p>
-                            {/* homework */}
                             Subtotal ({state.basket.length} items):
                             <strong>{value}</strong>
                         </p>
