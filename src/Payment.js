@@ -10,8 +10,9 @@ import CurrencyFormat from 'react-currency-format';
 import axios from './axios';
 
 const Payment = () => {
-    const [{ basket, user }] = useStateValue();
+    const [{ basket, user }, dispatch] = useStateValue();
     const history = useHistory();
+
     const elements = useElements();
     const stripe = useStripe();
 
@@ -26,7 +27,7 @@ const Payment = () => {
         const getClientSecret = async () => {
             const response = await axios({
                 method: 'post',
-                url: `/payment/create?total=${getBasketTotal(basket) * 100}`
+                url: `/payments/create?total=${getBasketTotal(basket) * 100}`
             });
             setClientSecret(response.data.clientSecret)
         }
@@ -43,12 +44,19 @@ const Payment = () => {
             }
         }).then(({ paymentIntent }) => {
             //paymentIntent = payment confirmation
+
+
             setSucceeded(true);
             setError(null);
             setProcessing(false);
 
+            dispatch({
+                type: 'EMPTY_BASKET'
+            })
+
             history.replace('/orders');
         })
+
     }
 
     const handleChange = e => {
