@@ -8,6 +8,7 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { getBasketTotal } from './reducer';
 import CurrencyFormat from 'react-currency-format';
 import axios from './axios';
+import { db } from './Firebase';
 
 const Payment = () => {
     const [{ basket, user }, dispatch] = useStateValue();
@@ -38,13 +39,22 @@ const Payment = () => {
         e.preventDefault();
         setProcessing(true);
 
-        const payload = await stripe.confirmCardPayment(clientSecret, {
+        await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement)
             }
         }).then(({ paymentIntent }) => {
             //paymentIntent = payment confirmation
 
+            db.collection('users')
+                .doc(user?.uid)
+                .collection('orders')
+                .doc(paymentIntent.id)
+                .set({
+                    basket: basket,
+                    amount: paymentIntent.amount,
+                    created: paymentIntent.created,
+                })
 
             setSucceeded(true);
             setError(null);

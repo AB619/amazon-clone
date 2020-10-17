@@ -16,7 +16,7 @@ const promise = loadStripe('pk_test_51Ha1fiIE5E8nP9ACOPniSZPk2ydGe3kSv1WOtATllIn
 
 function App() {
 
-  const [{ }, dispatch] = useStateValue();
+  const [{ basket }, dispatch] = useStateValue();
 
   useEffect(() => {
     auth
@@ -42,9 +42,10 @@ function App() {
       <div className="app">
 
         <Switch>
-          {/*Header*/}
-          <Header />
+
           <Route path="/orders">
+            {/*Header*/}
+            <Header />
             <Orders />
           </Route>
           <Route path="/login">
